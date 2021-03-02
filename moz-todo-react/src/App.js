@@ -17,6 +17,11 @@ function App(props) {
     setTasks(updatedTasks);
   }
 
+  function deleteTask(id) {
+    const remained = tasks.filter(task => task.id !== id);
+    setTasks(remained);
+  }
+
   function addTask(name) {
     const newTask = {id: "todo-" + nanoid(), name: name, completed: false};
     setTasks([...tasks, newTask]);
@@ -29,6 +34,7 @@ function App(props) {
       completed={task.completed} 
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
     />
   ));
   
